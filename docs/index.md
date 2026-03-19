@@ -1,4 +1,4 @@
-# package_name
+# uq_feature
 
 Short package description.
 
@@ -11,20 +11,20 @@ Short package description.
 ## Installation
 
 ```bash
-pip install package_name
+pip install uq_feature
 ```
 
 ## Quick Start
 
 ```python
-import package_name
+import uq_feature
 
 # Your example code here
 ```
 
 ## Documentation
 
-For full documentation, visit the [documentation site](https://username.github.io/package_name/).
+For full documentation, visit the [documentation site](https://skethirajan.github.io/uq_feature/).
 
 ## License
 

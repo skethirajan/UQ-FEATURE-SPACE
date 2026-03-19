@@ -1,16 +1,16 @@
 # Quick Start
 
-This guide will help you get started with package_name.
+This guide will help you get started with uq_feature.
 
 ## Basic Usage
 
 ```python
 from __future__ import annotations
 
-import package_name
+import uq_feature
 
 # Check version
-print(package_name.__version__)
+print(uq_feature.__version__)
 ```
 
 ## Next Steps

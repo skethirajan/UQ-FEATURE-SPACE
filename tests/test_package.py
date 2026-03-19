@@ -1,17 +1,17 @@
-"""Tests for package_name."""
+"""Tests for uq_feature."""
 
 from __future__ import annotations
 
-import package_name
+import uq_feature
 
 
 def test_version() -> None:
     """Test that version is defined."""
-    assert hasattr(package_name, "__version__")
-    assert isinstance(package_name.__version__, str)
+    assert hasattr(uq_feature, "__version__")
+    assert isinstance(uq_feature.__version__, str)
 
 
 def test_all_exports() -> None:
     """Test that __all__ is defined."""
-    assert hasattr(package_name, "__all__")
-    assert isinstance(package_name.__all__, list)
+    assert hasattr(uq_feature, "__all__")
+    assert isinstance(uq_feature.__all__, list)

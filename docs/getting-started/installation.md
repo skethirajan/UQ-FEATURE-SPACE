@@ -7,14 +7,14 @@
 ## Install from PyPI
 
 ```bash
-pip install package_name
+pip install uq_feature
 ```
 
 ## Install from Source
 
 ```bash
-git clone https://github.com/username/package_name.git
-cd package_name
+git clone https://github.com/skethirajan/uq_feature.git
+cd uq_feature
 pip install -e .
 ```
 

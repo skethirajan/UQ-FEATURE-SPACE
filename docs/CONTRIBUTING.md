@@ -27,8 +27,8 @@ We recommend using **uv** for package management due to its speed (10-100x faste
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Clone the repository
-git clone https://github.com/username/package_name.git
-cd package_name
+git clone https://github.com/skethirajan/uq_feature.git
+cd uq_feature
 
 # Create and activate virtual environment
 uv venv .venv
@@ -63,14 +63,14 @@ export UV_CACHE_DIR="${SCRATCH}/uv-cache"
 ```bash
 # Clone the repository
 cd $SCRATCH/projects  # or your preferred scratch location
-git clone https://github.com/username/package_name.git
-cd package_name
+git clone https://github.com/skethirajan/uq_feature.git
+cd uq_feature
 
 # Create virtual environment in scratch
-uv venv $SCRATCH/venvs/package_name
+uv venv $SCRATCH/venvs/uq_feature
 
 # Activate and install
-source $SCRATCH/venvs/package_name/bin/activate
+source $SCRATCH/venvs/uq_feature/bin/activate
 uv pip install -e ".[dev]"
 
 # Install pre-commit hooks
@@ -78,7 +78,7 @@ pre-commit install
 ```
 
 > [!TIP]
-> On NERSC, your scratch directory is at `$PSCRATCH` or `/pscratch/sd/<first-letter>/<username>/`.
+> On NERSC, your scratch directory is at `$PSCRATCH` or `/pscratch/sd/<first-letter>/<skethirajan>/`.
 
 ---
 
@@ -216,7 +216,7 @@ All changes should have associated unit tests.
 pytest
 
 # Run with coverage
-pytest --cov=package_name --cov-report=html
+pytest --cov=uq_feature --cov-report=html
 
 # Run specific test file
 pytest tests/test_module.py
@@ -228,7 +228,7 @@ pytest -k "test_load"
 ### Writing Tests
 
 - Place tests in the `tests/` directory.
-- Mirror the source structure (e.g., `src/package_name/utils.py` → `tests/test_utils.py`).
+- Mirror the source structure (e.g., `src/uq_feature/utils.py` → `tests/test_utils.py`).
 - Use descriptive test names: `test_load_data_raises_on_missing_file`.
 
 ---

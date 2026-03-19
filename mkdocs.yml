@@ -1,11 +1,11 @@
-site_name: package_name
+site_name: uq_feature
 site_description: Short package description.
-site_url: https://username.github.io/package_name/
-repo_url: https://github.com/username/package_name
-repo_name: username/package_name
+site_url: https://skethirajan.github.io/uq_feature/
+repo_url: https://github.com/skethirajan/uq_feature
+repo_name: skethirajan/uq_feature
 edit_uri: blob/main/docs/
 
-copyright: Copyright &copy; [YEAR] [COPYRIGHT HOLDER]
+copyright: Copyright &copy; 2026 Sudheesh Kumar Ethirajan
 
 theme:
   name: material
@@ -134,4 +134,4 @@ nav:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/username/package_name
+      link: https://github.com/skethirajan/uq_feature

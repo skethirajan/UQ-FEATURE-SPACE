@@ -6,6 +6,6 @@ body:
   - type: textarea
     attributes:
       label: How can we improve the documentation?
-      description: A description of something that should be added or made easier to understand in the documentation, including links to existing package_name documentation if applicable.
+      description: A description of something that should be added or made easier to understand in the documentation, including links to existing uq_feature documentation if applicable.
     validations:
       required: true

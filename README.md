@@ -1,8 +1,8 @@
-# py-scaffold
+# uq_feature
 
 [![Python](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
-[![PyPI](https://img.shields.io/pypi/v/package_name.svg)](https://pypi.org/project/package_name/)
-[![codecov](https://codecov.io/gh/skethirajan/py-scaffold/graph/badge.svg?token=dl0U9dYIj6)](https://codecov.io/gh/skethirajan/py-scaffold)
+[![PyPI](https://img.shields.io/pypi/v/uq_feature.svg)](https://pypi.org/project/uq_feature/)
+[![codecov](https://codecov.io/gh/skethirajan/uq_feature/graph/badge.svg)](https://codecov.io/gh/skethirajan/uq_feature)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![Pyrefly](https://img.shields.io/badge/pyrefly-checked-blueviolet)](https://github.com/NoneGG/pyrefly)
 [![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)

@@ -18,4 +18,4 @@ Tell them where to go, how often they can expect to get an update on a
 reported vulnerability, what to expect if the vulnerability is accepted or
 rejected, etc.
 
-To report a security vulnerability, please send an email to you@example.com.
+To report a security vulnerability, please send an email to skethirajan@gmail.com.

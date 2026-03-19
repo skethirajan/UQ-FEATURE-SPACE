@@ -9,16 +9,16 @@ build-backend = "hatchling.build"
 # Project Metadata
 # =============================================================================
 [project]
-name = "package_name"
+name = "uq_feature"
 version = "0.0.1"
 description = "Short package description."
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.12"
 
-authors = [{ name = "Your Name", email = "you@example.com" }]
+authors = [{ name = "Sudheesh Kumar Ethirajan", email = "skethirajan@gmail.com" }]
 
-maintainers = [{ name = "Your Name", email = "you@example.com" }]
+maintainers = [{ name = "Sudheesh Kumar Ethirajan", email = "skethirajan@gmail.com" }]
 
 keywords = ["scientific", "research", "python"]
 
@@ -57,15 +57,15 @@ docs = [
   "mkdocs-glightbox>=0.4",
 ]
 
-dev = ["package_name[tests,lint,types,docs]"]
+dev = ["uq_feature[tests,lint,types,docs]"]
 
 # =============================================================================
 # Project URLs
 # =============================================================================
 [project.urls]
-repository = "https://github.com/username/package_name"
-documentation = "https://username.github.io/package_name/"
-changelog = "https://github.com/username/package_name/blob/main/CHANGELOG.md"
+repository = "https://github.com/skethirajan/uq_feature"
+documentation = "https://skethirajan.github.io/uq_feature/"
+changelog = "https://github.com/skethirajan/uq_feature/blob/main/CHANGELOG.md"
 
 # =============================================================================
 # Commitizen - Version Bumping
@@ -76,7 +76,7 @@ version = "0.0.1"
 tag_format = "v$version"
 version_scheme = "pep440"
 version_files = [
-    "src/package_name/__init__.py:__version__",
+    "src/uq_feature/__init__.py:__version__",
 ]
 
 pre_bump_hooks = [
@@ -84,7 +84,7 @@ pre_bump_hooks = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/package_name"]
+packages = ["src/uq_feature"]
 
 # =============================================================================
 # Ruff - Linting & Formatting
@@ -151,7 +151,7 @@ unfixable = [
 convention = "numpy"
 
 [tool.ruff.lint.isort]
-known-first-party = ["package_name"]
+known-first-party = ["uq_feature"]
 required-imports = ["from __future__ import annotations"]
 split-on-trailing-comma = false
 
