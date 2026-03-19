@@ -1,0 +1,67 @@
+# CI workflow - runs on every push and PR
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  precommit:
+    name: Pre-commit checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install uv and create virtual environment
+        run: |
+          python -m pip install --upgrade uv
+          uv venv
+
+      - name: Install pre-commit and dev deps
+        run: |
+          uv pip install pre-commit
+          uv sync --extra dev   # installs ruff, docformatter, pyrefly, etc.
+
+      - name: Run all pre-commit hooks
+        run: uv run pre-commit run --all-files
+  # Typecheck job removed – handled by .github/workflows/type_check.yml
+  test:
+    name: Test (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.13"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[tests]"
+
+      - name: Run tests with coverage
+        run: pytest --cov=package_name --cov-report=xml --cov-report=term
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        if: matrix.python-version == '3.12'
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage.xml
+          fail_ci_if_error: false

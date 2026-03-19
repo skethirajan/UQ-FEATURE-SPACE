@@ -1,0 +1,137 @@
+site_name: package_name
+site_description: Short package description.
+site_url: https://username.github.io/package_name/
+repo_url: https://github.com/username/package_name
+repo_name: username/package_name
+edit_uri: blob/main/docs/
+
+copyright: Copyright &copy; [YEAR] [COPYRIGHT HOLDER]
+
+theme:
+  name: material
+  # favicon: assets/logo.png  # Add your logo
+  # logo: assets/logo.png
+  palette:
+    primary: orange
+    scheme: slate
+  font:
+    text: Roboto
+    code: Roboto Mono
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - content.action.edit
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+    - navigation.footer
+    - navigation.path
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - search.share
+    - header.autohide
+    - toc.follow
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.snippets:
+      base_path: ["."]
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - class: mermaid
+          format: pymdownx.superfences.fence_code_format
+          name: mermaid
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      width: auto
+      height: auto
+      zoomable: true
+      draggable: true
+      auto_caption: false
+      caption_position: bottom
+      background: white
+      shadow: true
+      manual: false
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          inventories:
+            - https://docs.python.org/3/objects.inv
+            - https://numpy.org/doc/stable/objects.inv
+          options:
+            docstring_style: numpy
+            docstring_section_style: list
+            separate_signature: true
+            merge_init_into_class: true
+            docstring_options:
+              ignore_init_summary: true
+            show_signature_annotations: true
+            signature_crossrefs: true
+            show_if_no_docstring: true
+
+  - gen-files:
+      scripts:
+        - docs/gen_ref_pages.py
+  - literate-nav:
+      nav_file: SUMMARY.md
+
+nav:
+  - Home: index.md
+  - Installation Guide 🔧: getting-started/installation.md
+  - User Guide 🧠:
+      - Quick Start: getting-started/quickstart.md
+  - Code Documentation 📖: reference/
+  - Developer Guide 🤝:
+      - Contributing: CONTRIBUTING.md
+  - About 📜:
+      - Changelog: about/changelog.md
+      - Contributors: about/contributors.md
+      - Acknowledgements: about/acknowledgements.md
+      - License: about/license.md
+      - Code of Conduct: about/conduct.md
+      - FAQ: about/faq.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/username/package_name

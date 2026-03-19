@@ -1,0 +1,206 @@
+# =============================================================================
+# Build System
+# =============================================================================
+[build-system]
+requires = ["hatchling>=1.20"]
+build-backend = "hatchling.build"
+
+# =============================================================================
+# Project Metadata
+# =============================================================================
+[project]
+name = "package_name"
+version = "0.0.1"
+description = "Short package description."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.12"
+
+authors = [{ name = "Your Name", email = "you@example.com" }]
+
+maintainers = [{ name = "Your Name", email = "you@example.com" }]
+
+keywords = ["scientific", "research", "python"]
+
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Operating System :: Unix",
+  "Operating System :: MacOS",
+  "Operating System :: Microsoft :: Windows",
+  "License :: OSI Approved :: BSD License",
+]
+
+dependencies = [] # runtime dependencies go here
+
+# =============================================================================
+# Optional Dependencies
+# =============================================================================
+[project.optional-dependencies]
+tests = ["pytest>=8", "pytest-cov>=6"]
+
+lint = ["ruff>=0.9", "docformatter>=1.7", "pre-commit>=4", "commitizen>=4"]
+
+types = ["pyrefly>=0.17"]
+
+docs = [
+  "mkdocs-material>=9",
+  "mkdocstrings[python]>=0.29",
+  "mkdocs-gen-files>=0.5",
+  "mkdocs-literate-nav>=0.6",
+  "pillow>=11",
+  "cairosvg>=2.8",
+  "mkdocs-glightbox>=0.4",
+]
+
+dev = ["package_name[tests,lint,types,docs]"]
+
+# =============================================================================
+# Project URLs
+# =============================================================================
+[project.urls]
+repository = "https://github.com/username/package_name"
+documentation = "https://username.github.io/package_name/"
+changelog = "https://github.com/username/package_name/blob/main/CHANGELOG.md"
+
+# =============================================================================
+# Commitizen - Version Bumping
+# =============================================================================
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.0.1"
+tag_format = "v$version"
+version_scheme = "pep440"
+version_files = [
+    "src/package_name/__init__.py:__version__",
+]
+
+pre_bump_hooks = [
+    "python scripts/check_release_branch.py",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/package_name"]
+
+# =============================================================================
+# Ruff - Linting & Formatting
+# =============================================================================
+[tool.ruff]
+extend-include = ["*.ipynb"]
+
+[tool.ruff.lint]
+select = [
+    "A",     # flake8-builtins
+    "ARG",   # flake8-unused-arguments
+    "ASYNC", # flake8-async
+    "B",     # flake8-bugbear
+    "C4",    # flake8-comprehensions
+    "D",     # pydocstyle
+    "DTZ",   # flake8-datetimez
+    "E",     # pycodestyle error
+    "F",     # pyflakes
+    "FA",    # flake8-future-annotations
+    "FLY",   # flynt
+    "I",     # isort
+    "ICN",   # flake8-import-conventions
+    "INT",   # flake8-gettext
+    "ISC",   # flake8-implicit-str-concat
+    "LOG",   # flake8-logging
+    "N",     # pep8-naming
+    "NPY",   # numpy-specific rules
+    "PD",    # pandas-vet
+    "PERF",  # perflint
+    "PIE",   # flake8-pie
+    "PL",    # pylint
+    "PT",    # flake8-pytest-style
+    "PTH",   # flake8-use-pathlib
+    "PYI",   # flake8-pyi
+    "Q",     # flake8-quotes
+    "RET",   # flake8-return
+    "RSE",   # flake8-raise
+    "RUF",   # Ruff-specific rules
+    "SIM",   # flake8-simplify
+    "SLOT",  # flake8-slots
+    "T20",   # flake8-print
+    "TCH",   # flake8-type-checking
+    "TID",   # flake8-tidy-imports
+    "UP",    # pyupgrade
+    "W",     # pycodestyle warning
+    "YTT",   # flake8-2020
+]
+ignore = [
+    "A005",    # Module shadows
+    "E501",    # Line too long
+    "ISC001",  # single-line-implicit-string-concatenation
+    "PLR",     # Design related pylint codes
+    "PERF203", # try-except-in-loop
+    "RET505",  # Unnecessary `elif` after `return`
+    "PTH208",  # os-listdir
+    "PLC0415", # `import` should be at the top-level of a file
+]
+unfixable = [
+    "T20",  # don't auto-remove print statements
+    "F841", # don't auto-remove unused variables
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.lint.isort]
+known-first-party = ["package_name"]
+required-imports = ["from __future__ import annotations"]
+split-on-trailing-comma = false
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/**" = ["ANN", "ARG", "D", "E402", "PTH", "S101"]
+"scripts/**" = ["T20", "ANN", "D"]
+
+[tool.ruff.format]
+docstring-code-format = true
+
+# =============================================================================
+# Pyrefly - Type Checking
+# =============================================================================
+[tool.pyrefly]
+project-includes = ["src"]
+project-excludes = ["**/.[!/.]*", "**/tests"]
+search-path = ["src"]
+ignore-missing-imports = []
+
+# =============================================================================
+# Pytest
+# =============================================================================
+[tool.pytest.ini_options]
+minversion = "8.0"
+pythonpath = "src"
+testpaths = ["tests"]
+addopts = ["-p no:warnings", "--import-mode=importlib"]
+xfail_strict = true
+
+# =============================================================================
+# Coverage
+# =============================================================================
+[tool.coverage.run]
+source = ["src"]
+branch = true
+
+[tool.coverage.report]
+exclude_also = [
+  "if TYPE_CHECKING:",
+  "if __name__ == .__main__.:",
+  "except ImportError:",
+  "raise NotImplementedError",
+  "@abstractmethod",
+]
+
+# =============================================================================
+# Docformatter
+# =============================================================================
+[tool.docformatter]
+pre-summary-newline = true
+style = "numpy"

@@ -1,0 +1,55 @@
+# Dependabot configuration
+# https://docs.github.com/en/code-security/dependabot/dependabot-version-updates
+
+version: 2
+updates:
+  # Python dependencies (pyproject.toml)
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    commit-message:
+      prefix: "deps"
+    labels:
+      - "dependencies"
+    open-pull-requests-limit: 10
+    # Allow only minor and patch updates (no major version bumps)
+    allow:
+      - dependency-type: "direct"
+        update-type: "version-update:semver-minor"
+    # Enable auto‑merge when CI passes and a reviewer approves
+    auto-merge: true
+    # Optional: use squash merge method
+    merge-method: "squash"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    commit-message:
+      prefix: "ci"
+    labels:
+      - "ci"
+    open-pull-requests-limit: 10
+    allow:
+      - dependency-type: "direct"
+        update-type: "version-update:semver-minor"
+    auto-merge: true
+    merge-method: "squash"
+
+  # Pre‑commit hooks
+  - package-ecosystem: "pre-commit"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    # Allow only minor/patch updates (pre‑commit hooks usually use tags)
+    allow:
+      - dependency-type: "direct"
+        update-type: "version-update:semver-minor"
+    auto-merge: true
+    merge-method: "squash"

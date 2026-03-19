@@ -1,0 +1,29 @@
+# .github/workflows/type_check.yml
+name: Type Checking
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Set up Python
+        run: uv python install 3.13
+
+      - name: Install development dependencies
+        run: uv sync --extra dev # dev extra should contain ruff, pyrefly, etc.
+
+      - name: Run ruff lint
+        run: uv run ruff check .
+
+      - name: Run pyrefly type check
+        run: uv run pyrefly check

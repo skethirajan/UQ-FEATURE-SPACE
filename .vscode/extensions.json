@@ -1,0 +1,19 @@
+{
+    "recommendations": [
+        // ---------------------------------------------------------------------------
+        // Core - Essential for this project
+        // ---------------------------------------------------------------------------
+        "charliermarsh.ruff", // Ruff linting and formatting
+        "ms-python.python", // Python language support
+        "ms-python.vscode-pylance", // Fast IntelliSense and type checking
+        "bungcip.better-toml", // TOML syntax highlighting (pyproject.toml)
+        "redhat.vscode-yaml", // YAML support (mkdocs.yml, CI workflows)
+        // ---------------------------------------------------------------------------
+        // Recommended - Improves development experience
+        // ---------------------------------------------------------------------------
+        "njpwerner.autodocstring", // Auto-generate NumPy-style docstrings
+        "davidanson.vscode-markdownlint", // Markdown linter for docs
+        "aaron-bond.better-comments", // Color-coded comment annotations
+        "vivaxy.vscode-conventional-commits" // Interactive Conventional Commits wizard
+    ]
+}

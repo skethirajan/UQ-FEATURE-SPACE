@@ -1,0 +1,15 @@
+coverage:
+  status:
+    project:
+      default:
+        target: auto
+        threshold: "0.2%" # Allow 0.2% drop in overall coverage
+    patch:
+      default:
+        target: auto
+        threshold: "2.0%" # Allow 2% drop in patch coverage (new lines)
+
+comment:
+  layout: "reach, diff, flags, files"
+  behavior: default
+  require_changes: false

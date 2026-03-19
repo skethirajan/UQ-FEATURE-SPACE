@@ -1,0 +1,9 @@
+# These owners will be the default owners for everything in the repo.
+# Unless a later match takes precedence, @username will be requested for
+# review when someone opens a pull request.
+
+*       @username
+
+# Define specific owners for different parts of the repo if needed
+# docs/  @username
+# tests/ @username
