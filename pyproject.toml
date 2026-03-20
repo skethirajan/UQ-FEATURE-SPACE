@@ -11,7 +11,7 @@ build-backend = "hatchling.build"
 [project]
 name = "uq_feature"
 version = "0.0.1"
-description = "Short package description."
+description = "Feature space clustering and uncertainty quantification."
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.12"
@@ -20,7 +20,7 @@ authors = [{ name = "Sudheesh Kumar Ethirajan", email = "skethirajan@gmail.com" 
 
 maintainers = [{ name = "Sudheesh Kumar Ethirajan", email = "skethirajan@gmail.com" }]
 
-keywords = ["scientific", "research", "python"]
+keywords = ["scientific", "research", "python", "ACE", "materials", "clustering", "uncertainty quantification", "HPC"]
 
 classifiers = [
   "Development Status :: 3 - Alpha",
@@ -28,14 +28,47 @@ classifiers = [
   "Topic :: Scientific/Engineering",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.12",
-  "Programming Language :: Python :: 3.13",
   "Operating System :: Unix",
-  "Operating System :: MacOS",
-  "Operating System :: Microsoft :: Windows",
   "License :: OSI Approved :: BSD License",
 ]
 
-dependencies = [] # runtime dependencies go here
+# =============================================================================
+# Runtime Dependencies
+# =============================================================================
+dependencies = [
+    # Core numerical stack (aligned with your freeze)
+    "numpy>=2.3.5",
+    "scipy>=1.17.1",
+    
+    # ML / clustering
+    "scikit-learn>=1.8.0",
+    "hdbscan>=0.8.41",
+    "pynndescent>=0.6.0",
+
+    # Config + experiment tracking
+    "hydra-core>=1.3.2",
+    "omegaconf>=2.3.0",
+    "wandb>=0.25.1",
+
+    # Utilities
+    "loguru>=0.7.3",
+    "pydantic>=2.12.5",
+    "tqdm>=4.67.3",
+
+    # Julia bridge (critical for ACE)
+    "juliacall>=0.9.31",
+
+    # Visualization
+    "matplotlib>=3.10.8",
+    "seaborn>=0.13.2",
+    "plotly>=6.6.0",
+
+    # Workflow
+    "executorlib[all]>=1.9.1",
+
+    # File format io
+    "ase>=3.28.0"
+]
 
 # =============================================================================
 # Optional Dependencies
