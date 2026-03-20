@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y graphviz graphviz-dev
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -17,6 +19,6 @@ jobs:
       - name: Install uv and dev dependencies
         run: |
           python -m pip install --upgrade uv
-          uv sync --extra dev   # installs ruff and other dev tools
+          uv sync --extra dev
       - name: Run ruff lint
         run: uv run ruff check .
