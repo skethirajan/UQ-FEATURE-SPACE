@@ -1,6 +1,9 @@
 # .github/workflows/type_check.yml
 name: Type Checking
 
+permissions:
+  contents: read
+
 on:
   push:
     branches: [main]
