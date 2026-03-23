@@ -1,0 +1,12 @@
+# ACE Default Package Configuration
+
+ace:
+  body_order: 6
+  rcut: 6.0
+  totaldegree: 16
+
+  # Need to be set by the user at runtime (don't set here)
+  paths:
+    dataset: Null  # Path to input dataset (e.g., ASE compatible file)
+    julia_exe: Null  # Path to Julia executable
+    julia_project: Null  # Path to Julia project (contains ACE.jl and dependencies)
