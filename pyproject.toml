@@ -56,7 +56,7 @@ dependencies = [
     "tqdm>=4.67.3",
 
     # Julia through Python (critical for ACE)
-    "juliacall>=0.9.31",
+    # "juliacall>=0.9.31",
 
     # Visualization
     "matplotlib>=3.10.8",
@@ -97,12 +97,18 @@ docs = [
 dev = ["uq_feature[tests,lint,types,docs]"]
 
 # =============================================================================
-# Project URLs
+# Register CLI
 # =============================================================================
 [project.urls]
 repository = "https://github.com/skethirajan/uq_feature"
 documentation = "https://skethirajan.github.io/uq_feature/"
 changelog = "https://github.com/skethirajan/uq_feature/blob/main/CHANGELOG.md"
+
+# =============================================================================
+# Project URLs
+# =============================================================================
+[project.scripts]
+uq-feature = "uq_feature.cli.main:main"
 
 # =============================================================================
 # Commitizen - Version Bumping
@@ -194,6 +200,7 @@ split-on-trailing-comma = false
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
+"src/uq_feature/cli/*.py" = ["B008", "TCH003"]
 "tests/**" = ["ANN", "ARG", "D", "E402", "PTH", "S101"]
 "scripts/**" = ["T20", "ANN", "D"]
 
