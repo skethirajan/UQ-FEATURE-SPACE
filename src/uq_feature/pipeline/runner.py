@@ -40,9 +40,15 @@ def run_pipeline(cfg):
         if step not in STEP_REGISTRY:
             raise ValueError(f"Unknown pipeline step: {step}")
 
-        module_path, func_name = STEP_REGISTRY[step].split(":")
+        entrypoint = STEP_REGISTRY[step]
+        module_path, func_name = entrypoint.split(":")
 
-        module = importlib.import_module(module_path)
-        func = getattr(module, func_name)
+        try:
+            module = importlib.import_module(module_path)
+            func = getattr(module, func_name)
+        except (ModuleNotFoundError, AttributeError) as exc:
+            raise ValueError(
+                f"Failed to load pipeline step '{step}' from entrypoint '{entrypoint}': {exc}"
+            ) from exc
 
         func(cfg)
