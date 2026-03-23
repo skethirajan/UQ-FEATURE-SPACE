@@ -223,5 +223,5 @@ IJulia.installkernel(
 );
 '
 
-uv pip install -e .[dev]
+uv pip install -e ".[dev]"
 pre-commit install
