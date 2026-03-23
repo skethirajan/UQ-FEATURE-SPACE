@@ -46,7 +46,46 @@ repos:
       - id: pyrefly-check
         name: Pyrefly (type checking)
         pass_filenames: false
-        additional_dependencies: [] # this should match with your dependencies in the pyproject.toml
+        additional_dependencies: [ # this should match with your dependencies in the pyproject.toml
+
+          # Core numerical stack (aligned with your freeze)
+          "numpy>=2.3.5",
+          "scipy>=1.17.1",
+
+          # ML / clustering
+          "scikit-learn>=1.8.0",
+          "hdbscan>=0.8.41",
+          "pynndescent>=0.6.0",
+
+          # Config + experiment tracking
+          "hydra-core>=1.3.2",
+          "omegaconf>=2.3.0",
+          "wandb>=0.25.1",
+
+          # Utilities
+          "loguru>=0.7.3",
+          "pydantic>=2.12.5",
+          "tqdm>=4.67.3",
+
+          # Julia through Python (critical for ACE)
+          # "juliacall>=0.9.31",
+
+          # Visualization
+          "matplotlib>=3.10.8",
+          "seaborn>=0.13.2",
+          "plotly>=6.6.0",
+
+          # Workflow
+          "executorlib[all]>=1.9.1",
+
+          # Structure Parser
+          "ase>=3.28.0",
+
+          # CLI
+          "typer>=0.24.1",
+          "rich>=14.3.3",
+
+        ]
 
   # Validate pyproject.toml
   - repo: https://github.com/abravalheri/validate-pyproject

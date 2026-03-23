@@ -39,7 +39,7 @@ dependencies = [
     # Core numerical stack (aligned with your freeze)
     "numpy>=2.3.5",
     "scipy>=1.17.1",
-    
+
     # ML / clustering
     "scikit-learn>=1.8.0",
     "hdbscan>=0.8.41",
@@ -55,8 +55,8 @@ dependencies = [
     "pydantic>=2.12.5",
     "tqdm>=4.67.3",
 
-    # Julia bridge (critical for ACE)
-    "juliacall>=0.9.31",
+    # Julia through Python (critical for ACE)
+    # "juliacall>=0.9.31",
 
     # Visualization
     "matplotlib>=3.10.8",
@@ -66,8 +66,12 @@ dependencies = [
     # Workflow
     "executorlib[all]>=1.9.1",
 
-    # File format io
-    "ase>=3.28.0"
+    # Structure Parser
+    "ase>=3.28.0",
+
+    # CLI
+    "typer>=0.24.1",
+    "rich>=14.3.3",
 ]
 
 # =============================================================================
@@ -76,29 +80,35 @@ dependencies = [
 [project.optional-dependencies]
 tests = ["pytest>=8", "pytest-cov>=6"]
 
-lint = ["ruff>=0.9", "docformatter>=1.7", "pre-commit>=4", "commitizen>=4"]
+lint = ["ruff>=0.15.7", "docformatter>=1.7.7", "pre-commit>=4.5.1", "commitizen>=4.13.9"]
 
-types = ["pyrefly>=0.17"]
+types = ["pyrefly>=0.57.1"]
 
 docs = [
-  "mkdocs-material>=9",
-  "mkdocstrings[python]>=0.29",
-  "mkdocs-gen-files>=0.5",
-  "mkdocs-literate-nav>=0.6",
-  "pillow>=11",
-  "cairosvg>=2.8",
-  "mkdocs-glightbox>=0.4",
+  "mkdocs-material>=9.7.6",
+  "mkdocstrings[python]>=1.0.3",
+  "mkdocs-gen-files>=0.6.1",
+  "mkdocs-literate-nav>=0.6.3",
+  "pillow>=12.0.0",
+  "cairosvg>=2.9.0",
+  "mkdocs-glightbox>=0.5.2",
 ]
 
 dev = ["uq_feature[tests,lint,types,docs]"]
 
 # =============================================================================
-# Project URLs
+# Register CLI
 # =============================================================================
 [project.urls]
 repository = "https://github.com/skethirajan/uq_feature"
 documentation = "https://skethirajan.github.io/uq_feature/"
 changelog = "https://github.com/skethirajan/uq_feature/blob/main/CHANGELOG.md"
+
+# =============================================================================
+# Project URLs
+# =============================================================================
+[project.scripts]
+uq-feature = "uq_feature.cli.main:main"
 
 # =============================================================================
 # Commitizen - Version Bumping
@@ -190,6 +200,7 @@ split-on-trailing-comma = false
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
+"src/uq_feature/cli/*.py" = ["B008", "TCH003"]
 "tests/**" = ["ANN", "ARG", "D", "E402", "PTH", "S101"]
 "scripts/**" = ["T20", "ANN", "D"]
 
@@ -209,7 +220,7 @@ ignore-missing-imports = []
 # Pytest
 # =============================================================================
 [tool.pytest.ini_options]
-minversion = "8.0"
+minversion = "9.0"
 pythonpath = "src"
 testpaths = ["tests"]
 addopts = ["-p no:warnings", "--import-mode=importlib"]

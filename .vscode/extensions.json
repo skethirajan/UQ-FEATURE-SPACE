@@ -6,7 +6,7 @@
         "charliermarsh.ruff", // Ruff linting and formatting
         "ms-python.python", // Python language support
         "ms-python.vscode-pylance", // Fast IntelliSense and type checking
-        "bungcip.better-toml", // TOML syntax highlighting (pyproject.toml)
+        "tamasfe.even-better-toml", // TOML syntax highlighting (pyproject.toml)
         "redhat.vscode-yaml", // YAML support (mkdocs.yml, CI workflows)
         // ---------------------------------------------------------------------------
         // Recommended - Improves development experience

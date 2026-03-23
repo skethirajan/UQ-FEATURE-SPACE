@@ -204,7 +204,7 @@ runinfo/
 *.o[0-9]*
 *.e[0-9]*
 slurm-[0-9]*.out
-core.*
+*.core
 
 # Results and outputs
 results/
