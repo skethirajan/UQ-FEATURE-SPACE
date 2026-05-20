@@ -9,10 +9,10 @@ function parse_args()
     if length(ARGS) < 6
         println("""
 Usage:
-julia compute_ace.jl <julia_project> <xyz_file> <out_dir> <order> <totaldegree> <rcut>
+julia ace.jl <julia_project> <xyz_file> <out_dir> <order> <totaldegree> <rcut>
 
 Example:
-julia compute_ace.jl /path/to/env dataset.xyz out_dir 3 6 6.0
+julia ace.jl /path/to/env dataset.xyz out_dir 3 6 6.0
 """)
         exit(1)
     end

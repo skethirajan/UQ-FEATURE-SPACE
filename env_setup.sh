@@ -112,7 +112,7 @@ rm -rf "$HOME/.local/share/jupyter/kernels/$IPYTHON_KERNEL_NAME"
 
 # Optional: remove Julia installation entirely if necessary
 rm -rf "$JULIA_INSTALL_ROOT" "$HOME/.julia" "$WORKSPACE_ROOT/.home.julia"
-rm -rf $HOME/.local/share/jupyter/kernels/julia-*
+rm -rf "$HOME/.local/share/jupyter/kernels"/julia-*
 
 # ------------------------------------------------------------------
 # Install Julia outside conda if not already installed at target path
