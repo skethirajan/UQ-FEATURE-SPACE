@@ -63,7 +63,8 @@ def main(cfg: DictConfig) -> None:
         raise ValueError("WORK_DIR not set in config")
 
     save_dir = (
-        work_dir / f"ACE/{dataset_path.stem}/B-{body_order}_D-{totaldegree}_Rcut-{rcut}"
+        Path(work_dir)
+        / f"ACE/{dataset_path.stem}/B-{body_order}_D-{totaldegree}_Rcut-{rcut}"
     )
     save_dir.mkdir(parents=True, exist_ok=True)
 
